@@ -249,7 +249,6 @@ if (isset($_POST['login'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
     $cUser = $email;
-    setCurrUser($email);
 
     $result = $mysqli->query("SELECT * FROM accounts WHERE email = '$email' AND password = '$password'")
                 or die("Failed to query database".mysqli_error($mysqli));
@@ -257,6 +256,8 @@ if (isset($_POST['login'])) {
     $row = $result->fetch_assoc();
     if ($row['username'] == $username && $row['password'] == $password) {
         header('location: ./client/home.php');
+        $_SESSION['cUser'] = $cUser;
+        $_SESSION['cUser_acc'] = $row['account_number'];
     }
     else {
         $_SESSION['message'] = "Login failed!";

@@ -13,10 +13,14 @@
         <?php require_once $_SERVER['DOCUMENT_ROOT'] . '/process.php'; ?>
 
         <?php
-            $cUser = $_SESSION['cUser']; 
+            $cUser = $_SESSION['cUser'];
+            $cUser_acc = $_SESSION['cUser_acc'];
             $mysqli = new mysqli('127.0.0.1', 'root', '1234', 'banking') 
                 or die(mysqli_error($mysqli));
             $currentUser = $mysqli->query("SELECT * FROM accounts WHERE email = '$cUser'")
+                or die($mysqli->error);
+            
+            $recent = $mysqli->query("SELECT * FROM transfer_list WHERE from_acc = '$cUser_acc'")
                 or die($mysqli->error);
         ?>
 
@@ -42,16 +46,24 @@
                         <input type="text" name="transferer" class="form-control" value="<?php echo $row['account_number']; ?>" readonly>
                     </div>
                     <div class="form-group">
-                        <h3>Available balance: TWD  <?php echo $balance; ?></h3>
+                        <h5>Available balance: TWD  <?php echo $balance; ?></h5>
                     </div>
                     <?php endwhile; ?>
                     <div class="form-group">
                         <label>Transfer to</label>
-                        <input type="text" name="transferee" class="form-control" onkeyup="showName(this.value)">
+                        <input type="text" id="input" name="transferee" class="form-control" onkeyup="showName(this.value)" autofocus="autofocus">
+                    </div>
+                    <div class="form-group">
+                        <select id="select" onchange="recentTransfer()">
+                            <option value="">Recent transfers</option>
+                            <?php while($row = $recent->fetch_assoc()): ?>
+                            <option value="<?php echo $row['to_acc']; ?>"><?php echo $row['to_acc'] . " - ". $row['to_name']; ?></option>
+                            <?php endwhile; ?>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label>Name</label>
-                        <p><span id="accName"></span></p>
+                        <p><i><span id="accName"></i></span></p>
                     </div>
                     
                     <div class="form-group">
@@ -68,7 +80,21 @@
         
     </body>
 
-    <script>      
+    <script>
+        $(function(){
+            $("#select").change(function(){
+                $("#input").val($('#select option:selected').val());
+                $("#input").keyup();
+            });     
+        });
+
+        function recentTransfer() {
+        var e = document.getElementById("recent");
+        var str = e.options[e.selectedIndex].value;
+
+        document.getElementById('txt').value = str;
+        }
+
         function showName(str) {
             if (str.length == 0) {
                 document.getElementById("accName").innerHTML = "";

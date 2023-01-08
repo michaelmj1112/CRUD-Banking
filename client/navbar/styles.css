@@ -5,6 +5,7 @@
     padding: 20px;
     background-color: #0e1446;
     color: #ffad72;
+    z-index: 1;
 }
 
 .nav-links a {

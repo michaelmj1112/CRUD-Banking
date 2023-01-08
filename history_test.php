@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css"/>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap4.min.css"/>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js"></script>
     </head>
 
     <body>
@@ -21,32 +22,37 @@
         <div id="nav-placeholder"></div>
 
         <div class="container">
-            <div class="form-group">
-                <span class="input-group-addon">Search</span>
-                <input type="text" name="search_text" class="form-control" onkeyup="getHistory(this.value)">
+            <div class="row justiy-content-center">
+                <div class="col-lg-10 bg-light rounded my-2 py-2">
+                    <h4 class="text-center text-dark pt-2">Pagination Test</h4>
+                    <table class="table table-bordered table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Transaction</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php while($row = $result->fetch_assoc()): ?>
+                                <tr>
+                                    <td><?php echo $row['date_created']; ?></td>
+                                    <td><?php echo $row['remarks']; ?></td>
+                                    <td><?php echo $row['amount']; ?></td>
+                                </tr>
+                            <?php endwhile; ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            <div id="history">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Date</th>
-                            <th>Transaction</th>
-                            <th>Amount</th>
-                        </tr>
-                    </thead>
-                    <?php while($row = $result->fetch_assoc()): ?>
-                        <tr>
-                            <td><?php echo $row['date_created']; ?></td>
-                            <td><?php echo $row['remarks']; ?></td>
-                            <td><?php echo $row['amount']; ?></td>
-                        </tr>
-                    <?php endwhile; ?>
-                </table>
-            </div>
-            <!-- <p><span id="history"></span></p> -->
         </div>
     </body>
 
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('table').DataTable();
+        });
+    </script>
     <script>
         function getHistory(str) {
             var xmlhttp = new XMLHttpRequest();
