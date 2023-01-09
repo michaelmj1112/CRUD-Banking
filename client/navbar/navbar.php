@@ -26,8 +26,9 @@
                 <div class="menu">
                     <li><a href="/client/home.php">Home</a></li>
                     <li class="services">
-                        <a href="/client/transactions/history.php">Transactions</a>
+                        <p>Transactions</p>
                         <ul class="dropdown">
+                            <li><a href="/client/transactions/history.php">History</a></li>
                             <li><a href="/client/transactions/deposit.php">Deposit</a></li>
                             <li><a href="/client/transactions/withdraw.php">Withdraw</a></li>
                             <li><a href="/client/transactions/transfer.php">Transfer funds</a></li>

@@ -39,6 +39,20 @@ function getAccNum() {
     return $num;
 }
 
+$key = 'dcnakd3917&^34918djakw0+41-';
+function encryptthis($data, $key) {
+    $encryption_key = base64_decode($key);
+    $iv = openssl_random_pseudo_bytes(openssl_cipher_iv_length('aes-256-cbc'));
+    $encrypted = openssl_encrypt($data, 'aes-256-cbc', $encryption_key, 0, $iv);
+    return base64_encode($encrypted . '::' . $iv);
+}
+
+function decryptthis($data, $key) {
+    $encryption_key = base64_decode($key);
+    list($encrypted_data, $iv) = array_pad(explode('::', base64_decode($data), 2),2,null);
+    return openssl_decrypt($encrypted_data, 'aes-256-cbc', $encryption_key, 0, $iv);
+}
+
 class TransactionDemo {
 
     const DB_HOST = '127.0.0.1';
@@ -250,16 +264,22 @@ if (isset($_POST['login'])) {
     $password = $_POST['password'];
     $cUser = $email;
 
-    $result = $mysqli->query("SELECT * FROM accounts WHERE email = '$email' AND password = '$password'")
+    // $query = $mysqli->query("SELECT * FROM accounts ")
+
+    $result = $mysqli->query("SELECT * FROM accounts WHERE email = '$email'")
                 or die("Failed to query database".mysqli_error($mysqli));
 
     $row = $result->fetch_assoc();
-    if ($row['username'] == $username && $row['password'] == $password) {
+    $DBpassword = decryptthis($row['password'], $key);
+    if ($row['email'] == $email && $DBpassword == $password) {
         header('location: ./client/home.php');
         $_SESSION['cUser'] = $cUser;
         $_SESSION['cUser_acc'] = $row['account_number'];
     }
     else {
+        // echo "E-mail: " . $email . "<br>";
+        // echo "Password: " . $password . "<br>";
+        // echo "DB password: " . $password . "<br>";
         $_SESSION['message'] = "Login failed!";
         $_SESSION['msg_type'] = "danger";
         header('location: index.php');
@@ -290,21 +310,28 @@ if (isset($_POST['admin_login'])) {
 }
 
 if (isset($_POST['register'])) {
+    $acc_num = getAccNum();
+    $acc_num = implode($acc_num);
+    $ssn = $_POST['ssn'];
+    $firstname = $_POST['firstname'];
+    $lastname = $_POST['lastname'];
+    $address = $_POST['address'];
+    $city = $_POST['city'];
+    $country = $_POST['country'];
+    $email = $_POST['email'];
     $password = $_POST['password'];
     $cPassword = $_POST['cPassword'];
 
-    echo $password . " -- " . $cPassword . "<BR>";
+    // echo $password . " -- " . $cPassword . "<BR>";
     if ($password != $cPassword) {
         $_SESSION['message'] = "Password doesn't match!";
         $_SESSION['msg_type'] = "warning";
         header('location: register.php');
     } else {
-        $email = $_POST['email'];
-        $firstname = $_POST['firstname'];
-        $lastname = $_POST['lastname'];
-        $num = getAccNum();
-        $num = implode($num);
-        $query = $mysqli->query("INSERT INTO `accounts`(`account_number`, `firstname`, `lastname`, `email`, `password`, `balance`) VALUES ('$num','$firstname','$lastname','$email','$password','0')")
+        $passEncrypted = encryptthis($password, $key);
+
+        $query = $mysqli->query("INSERT INTO `accounts`(`account_number`, `SSN`, `firstname`, `lastname`, `address`, `city`, `country`, `email`, `password`) 
+                                    VALUES ('$acc_num','$ssn','$firstname','$lastname','$address','$city','$country','$email','$passEncrypted')")
             or die($mysqli->error);
         $_SESSION['message'] = "Registered succesfully";
         $_SESSION['msg_type'] = "success";

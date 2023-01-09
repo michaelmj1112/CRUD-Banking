@@ -23,24 +23,32 @@
             <div class="row justify-content-center">
                 <form action="process.php" method="POST">
                     <div class="form-group">
+                        <label>SSN</label>
+                        <input type="text" name="ssn" class="form-control" required>
+                    </div>
+                    <div class="form-group" style="display: flex;">
                         <label>Firstname</label>
                         <input type="text" name="firstname" class="form-control" required>
-                    </div>
-                    <div class="form-group">
                         <label>Lastname</label>
                         <input type="text" name="lastname" class="form-control" required>
                     </div>
+                    <div class="form-group" style="display: flex;">
+                        <label>Address</label>
+                        <input type="text" name="address" class="form-control" required>
+                        <label>City</label>
+                        <input type="text" name="city" class="form-control" required>
+                        <label>Country</label>
+                        <input type="text" name="country" class="form-control" required>
+                    </div>
                     <div class="form-group">
                         <label>E-mail</label>
-                        <input type="text" name="email" class="form-control" placeholder="Enter your e-mail" required>
+                        <input type="text" name="email" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label>Password</label>
-                        <input type="password" name="password"  class="form-control" placeholder="Enter your password" required>
-                    </div>
-                    <div class="form-group">
+                        <input type="password" name="password"  class="form-control" required>
                         <label>Confirm password</label>
-                        <input type="password" name="cPassword"  class="form-control" placeholder="Confirm your password" required>
+                        <input type="password" name="cPassword"  class="form-control" required>
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary" name="register">Register</button>
@@ -48,6 +56,5 @@
                     </div>  
                 </form>
             </div>
-        </div>
     </body>
 </html>
