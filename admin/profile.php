@@ -50,7 +50,7 @@
                     </div>
                     <div class="form-group">
                         <label>Password</label>
-                        <input type="password" id="psw" name="password" class="form-control">
+                        <input type="password" id="psw" name="password" class="form-control" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
                         <p><i>Leave empty if you do not wish to change your password</i></p>
                         <div id="message">
                             <h3>Password must contain the following:</h3>

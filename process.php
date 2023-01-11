@@ -562,6 +562,7 @@ if (isset($_POST['admin_update'])) {
     $lastname = $_POST['lastname'];
     $username = $_POST['username'];
     $password = $_POST['password'];
+    $password = encryptthis($password, $key);
     $date = date("Y-m-d H:i:s");
 
     if ($password != '') {

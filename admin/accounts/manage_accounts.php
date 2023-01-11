@@ -62,7 +62,8 @@
                     </div>
                     <div class="form-group">
                         <label>Password</label>
-                        <input type="password" id="psw" name="password" class="form-control" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+                        <input type="password" id="psw" name="password" class="form-control" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
+                        <p style="font-size:x-small;"><i>Leave empty if you do not wish to change your password</i></p>
                         <div id="message">
                             <h3>Password must contain the following:</h3>
                             <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
@@ -71,7 +72,7 @@
                             <p id="length" class="invalid">Minimum <b>8 characters</b></p>
                         </div>
                         <label>Confirm password</label>
-                        <input type="password" name="cPassword" class="form-control" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+                        <input type="password" name="cPassword" class="form-control" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
                     </div>
 
                     <?php if ($update != true): ?>

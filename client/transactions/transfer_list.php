@@ -44,7 +44,7 @@
                         <thead>
                             <tr>
                                 <th>Account #</th>
-                                <th>Name</th>
+                                <th>Nickname</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -74,7 +74,7 @@
                         <input type="hidden" name="from_acc" value="<?php echo $acc_num; ?>"> 
 
                         <input type="text" name="to_acc" class="form-control" value="<?php echo $to_acc; ?>" required>
-                        <label>Name</label>
+                        <label>Nickname</label>
                         <input type="text" name="to_name" class="form-control" value="<?php echo $to_name; ?>" required>
 
                         <?php if ($update !== true): ?>
