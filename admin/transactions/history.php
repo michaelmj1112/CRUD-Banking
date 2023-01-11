@@ -22,10 +22,10 @@
                 or die($mysqli->error);
         ?>
 
-        <div class="container">
+        <div class="container" style="padding: 1em 2em;">
             <div class="row justiy-content-center">
                 <div class="col-lg-10 rounded my-2 py-2">
-                    <table class="table">
+                    <table class="table" style="font-size: 1.2rem;">
                         <thead>
                             <tr>
                                 <th>Date</th>

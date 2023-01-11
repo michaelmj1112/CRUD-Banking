@@ -3,6 +3,7 @@
     <head>
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css"/>
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap4.min.css"/>
+        <link rel="stylesheet" href="/assets/css/background.css">
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
@@ -28,10 +29,10 @@
                 or die($mysqli->error);
         ?>
 
-        <div class="container">
+        <div class="container" style="padding: 1em 2em;">
             <div class="row justiy-content-center">
                 <div class="col-lg-10 rounded my-2 py-2">
-                    <table class="table">
+                    <table class="table" style="font-size: 1.3rem;">
                         <thead>
                             <tr>
                                 <th>Date</th>

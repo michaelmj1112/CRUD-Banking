@@ -54,10 +54,15 @@
 
                 $emailEncrypted = encryptthis($email, $key);
                 $passEncrypted = encryptthis($password, $key);
+                $passDecrypted = decryptthis($passEncrypted, $key);
 
-                $query = $mysqli->query("INSERT INTO `accounts_test`(`account_number`, `SSN`, `firstname`, `lastname`, `address`, `city`, `country`, `email`, `password`) 
-                                            VALUES ('$acc_num','$ssn','$firstname','$lastname','$address','$city','$country','$emailEncrypted','$passEncrypted')")
-                    or die($mysqli->error);
+                echo "Password: " . $password . "<BR>";
+                echo $passEncrypted . "<BR>";
+                echo $passDecrypted;
+
+                // $query = $mysqli->query("INSERT INTO `accounts_test`(`account_number`, `SSN`, `firstname`, `lastname`, `address`, `city`, `country`, `email`, `password`) 
+                //                             VALUES ('$acc_num','$ssn','$firstname','$lastname','$address','$city','$country','$emailEncrypted','$passEncrypted')")
+                //     or die($mysqli->error);
             }
         ?>
 
@@ -66,29 +71,29 @@
                 <form method="POST">
                     <div class="form-group">
                         <label>SSN</label>
-                        <input type="text" name="ssn" class="form-control" required>
+                        <input type="text" name="ssn" class="form-control" >
                     </div>
                     <div class="form-group" style="display: flex;">
                         <label>Firstname</label>
-                        <input type="text" name="firstname" class="form-control" required>
+                        <input type="text" name="firstname" class="form-control" >
                         <label>Lastname</label>
-                        <input type="text" name="lastname" class="form-control" required>
+                        <input type="text" name="lastname" class="form-control" >
                     </div>
                     <div class="form-group" style="display: flex;">
                         <label>Address</label>
-                        <input type="text" name="address" class="form-control" required>
+                        <input type="text" name="address" class="form-control" >
                         <label>City</label>
-                        <input type="text" name="city" class="form-control" required>
+                        <input type="text" name="city" class="form-control" >
                         <label>Country</label>
-                        <input type="text" name="country" class="form-control" required>
+                        <input type="text" name="country" class="form-control" >
                     </div>
                     <div class="form-group">
                         <label>E-mail</label>
-                        <input type="text" name="email" class="form-control" required>
+                        <input type="text" name="email" class="form-control" >
                     </div>
                     <div class="form-group">
                         <label>Password</label>
-                        <input type="password" name="password"  class="form-control" required>
+                        <input type="password" name="password"  class="form-control" >
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary" name="register">Register</button>

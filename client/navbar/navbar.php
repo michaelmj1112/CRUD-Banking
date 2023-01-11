@@ -18,7 +18,8 @@
         ?>
 
         <nav class="navbar">
-            <div class="logo">OBS</div>
+            <!-- <div class="logo">OBS</div> -->
+            <img src="/assets/images/logo.png" alt="Bank logo" width="80" height="80">
             <ul class="nav-links">
                 <input type="checkbox" id="checkbox_toggle" />
                 <label for="checkbox_toggle" class="hamburger">&#9776;</label>
@@ -34,6 +35,7 @@
                             <li><a href="/client/transactions/transfer.php">Transfer funds</a></li>
                         </ul>
                     </li>
+                    <li><a href="/client/transactions/transfer_list.php">Transfer List</a></li>
                     <li class="services">
                         <?php while($row = $currentUser->fetch_assoc()): ?>
                         <p><?php echo $row['firstname'] . " " . $row['lastname']; ?></p>

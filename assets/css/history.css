@@ -1,41 +1,6 @@
-.table {
-    font-size: 1.2em;
-}
-
-.pagination a{
-    font-size: 1.5em;
-    color: #0e1446;
-}
-
-.prev-next {
-    letter-spacing: 2px;
-}
-
-.active {
-    /* letter-spacing: 0.3em; */
-    padding-left: 0.2em;
-    padding-right: 0.2em;
-
-    border-radius: 1em 0 1em 0;
-    background-image: linear-gradient(
-        -100deg,
-        rgba(0, 20, 255, 0.2),
-        rgba(0, 20, 255, 0.7) 95%,
-        rgba(0, 20, 255, 0.1)
-    );    
-}
-
-.unactive {
-    /* letter-spacing: 0.3em; */
-    padding-left: 0.2em;
-    padding-right: 0.2em;
-}
-
-.inline {
-    padding: 0.5em;
-    padding-left: 0em;
-}
-
-.inline input {
-    width: 3em;
-}
+/* table {
+    border: 2px solid;
+    border-collapse: collapse;
+    border-radius: 20px;
+    font-size: 1.3rem;
+} */

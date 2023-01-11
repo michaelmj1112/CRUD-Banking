@@ -1,0 +1,19 @@
+body {
+    background: url('/assets/images/bank_bg.jpeg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+form {
+    background: rgba(255, 255, 255, .85);
+    border : 1px solid white;
+    border-radius: 20px;
+    margin: 3em;
+    padding : 3em;
+}
+
+label {
+    text-align: center;
+}

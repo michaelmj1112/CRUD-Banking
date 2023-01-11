@@ -2,7 +2,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px;
+    padding: 1.3em;
     background-color: #0e1446;
     color: #ffad72;
     z-index: 1;
@@ -12,18 +12,14 @@
     color: #ffad72;
 }
 
-.logo {
-    font-size: 1em;
-}
-
 .menu {
     display: flex;
     gap: 1em;
-    font-size: 18px;
+    font-size: 1.3rem;
 }
 
 .menu li {
-    padding: 5px 14px;
+    padding: 5px 10px;
     list-style-type: none;
 }
 

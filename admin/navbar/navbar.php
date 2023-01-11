@@ -17,7 +17,7 @@
         ?>
 
         <nav class="navbar">
-            <div class="logo">OBS</div>
+        <img src="/assets/images/logo.png" alt="Bank logo" width="80" height="80">
             <ul class="nav-links">
                 <input type="checkbox" id="checkbox_toggle" />
                 <label for="checkbox_toggle" class="hamburger">&#9776;</label>

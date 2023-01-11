@@ -1,0 +1,30 @@
+.spoiler, .spoiler > * { transition: color 0.5s, opacity 0.5s }
+.spoiler:not(:hover) { color: transparent }
+.spoiler:not(:hover) > * { opacity: 0 }
+/* fix weird transitions on Chrome: */
+blockquote, blockquote > *:not(a) { color: black }
+
+/* some basic bg styles for demonstration purposes */
+blockquote { background: whitesmoke; }
+code { background: white; }
+img { vertical-align: middle }
+
+.flexbox {
+    padding: 1em;
+    display: flex;
+    font-size: 1.5rem;
+}
+
+.flex-left {
+    /* margin-right: 3em; */
+}
+
+.flex-right {
+    margin-left: 3em;
+    padding-left: 3em;
+    border-left: 2px solid black;
+}
+
+.submit {
+    transform: translate(35%, 50%);
+}

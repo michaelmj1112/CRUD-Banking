@@ -2,6 +2,7 @@
 <html>
     <head>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="/assets/css/home.css">
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
@@ -31,17 +32,15 @@
         ?>
 
         <div class="container">
-            <div class="row justify-content-center">
-                <!-- <a href="./logout.php">Logout</a>
-                <a href="./accounts/manage_accounts.php">Create new account</a>
-                <a href="./accounts/">Accounts list</a> -->
-                <?php while($row = $currentUser->fetch_assoc()): ?>
-                <h1>Welcome! <?php echo $row['firstname'] . " " . $row['lastname']; ?></h1>
-                <h2>Total accounts: <?php echo $noOfAccounts; ?></h2>
-                <?php $totBalance = number_format($totBalance, 2, '.', ','); ?>
-                <h2>Total accounts balance: TWD <?php echo $totBalance; ?></h2>
-                <?php endwhile; ?>
+            <?php while($row = $currentUser->fetch_assoc()): ?>
+            <h1 style="font-size: 2.5rem;">Welcome! <?php echo $row['firstname'] . " " . $row['lastname']; ?></h1>
+            <div>
+                <h2 style="font-size: 2rem;">Total accounts: <?php echo $noOfAccounts; ?></h2>
             </div>
+            
+            <?php $totBalance = number_format($totBalance, 2, '.', ','); ?>
+            <h2 style="font-size: 2rem;">Total accounts balance: TWD <?php echo $totBalance; ?></h2>
+            <?php endwhile; ?>
         </div>
     </body>
 

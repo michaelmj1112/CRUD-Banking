@@ -2,6 +2,8 @@
 <html>
     <head>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="/assets/css/transfer.css">
+        <link rel="stylesheet" href="/assets/css/background.css">
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
@@ -41,36 +43,43 @@
                         $acc_num = $row['account_number'];
                         $balance = number_format($row['balance'], 2, '.', ',');
                     ?>
-                    <div class="form-group">
-                        <label>Transferer</label>
-                        <input type="text" name="transferer" class="form-control" value="<?php echo $row['account_number']; ?>" readonly>
+                    <div class="flexbox">
+                        <div class="flex-left">
+                            <div class="form-group">
+                                <label>Transferer</label>
+                                <input type="text" name="transferer" class="form-control" value="<?php echo $row['account_number']; ?>" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label>Available balance:</label>
+                                <label>TWD  <?php echo $balance; ?></label>
+                            </div>
+                        <?php endwhile; ?>
+                        </div>
+                        <div class="flex-right">
+                            <div class="form-group">
+                                <label>Transfer to</label>
+                                <input type="text" id="input" name="transferee" class="form-control" onkeyup="showName(this.value)" autofocus="autofocus">
+                            </div>
+                            <div>
+                                <label>Select from transfer list</label>
+                            </div>
+                            <select id="select" onchange="recentTransfer()" style="margin-bottom: 1em;">
+                                    <option value="">-</option>
+                                    <?php while($row = $recent->fetch_assoc()): ?>
+                                    <option value="<?php echo $row['to_acc']; ?>"><?php echo $row['to_acc'] . " - ". $row['to_name']; ?></option>
+                                    <?php endwhile; ?>
+                            </select>
+                            <div class="form-group">
+                                <label>Name</label>
+                                <p><i><span id="accName"></i></span></p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <h5>Available balance: TWD  <?php echo $balance; ?></h5>
-                    </div>
-                    <?php endwhile; ?>
-                    <div class="form-group">
-                        <label>Transfer to</label>
-                        <input type="text" id="input" name="transferee" class="form-control" onkeyup="showName(this.value)" autofocus="autofocus">
-                    </div>
-                    <div class="form-group">
-                        <select id="select" onchange="recentTransfer()">
-                            <option value="">Recent transfers</option>
-                            <?php while($row = $recent->fetch_assoc()): ?>
-                            <option value="<?php echo $row['to_acc']; ?>"><?php echo $row['to_acc'] . " - ". $row['to_name']; ?></option>
-                            <?php endwhile; ?>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Name</label>
-                        <p><i><span id="accName"></i></span></p>
-                    </div>
-                    
-                    <div class="form-group">
+                    <div class="form-group" style="padding: 0em 1em;">
                         <label>Amount</label>
                         <input type="text" name="amount" class="form-control" placeholder="Enter amount to be transfered">
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" style="padding: 0em 1em;">
                         <button type="submit" class="btn btn-primary" name="transfer">Continue</button>
                         <a href="home.php">Back</a>
                     </div>

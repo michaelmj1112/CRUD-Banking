@@ -22,14 +22,14 @@
             </div>
         <?php endif ?>
 
-        <div class="container">
+        <div class="container" style="padding: 1em;">
             <div class="row justify-content-center">
                 <form action="../process.php" method="POST">
-                    <h2>Deposit</h2>
+                    <h1 style="margin-bottom: 0.5em;">Deposit</h1>
                     <div class="form-group">
                         <input type="hidden" name="isAdmin" value="1">
                         <label>Account number</label>
-                        <input type="text" name="from" class="form-control" onkeyup="showNameBalance(this.value)">
+                        <input type="text" name="from" class="form-control" onkeyup="showNameBalance(this.value)" required>
                         <label><em>Name</em></label>
                         <p><strong><span id="accName"></span></strong></p>
                         <label><em>Balance</em></label>
@@ -37,7 +37,7 @@
                     </div>
                     <div class="form-group">
                         <label>Amount</label>
-                        <input type="text" name="amount" class="form-control">
+                        <input type="text" name="amount" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary" name="deposit">Continue</button>
@@ -75,7 +75,6 @@
                 xmlhttp.onreadystatechange = function() {
                     if (this.readyState == 4 && this.status == 200) {
                         document.getElementById("accName").innerHTML = this.responseText;
-                        document.getElementById("accBal").innerHTML = this.responseText;
                     }
                 };
                 xmlhttp.open("GET", "../../functions/getName.php?q=" + str, true);

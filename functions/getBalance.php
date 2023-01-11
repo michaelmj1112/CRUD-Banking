@@ -21,5 +21,5 @@
             }
         }
     }
-    echo $balance === "" ? "Account doesn't exist!" : number_format($balance, 2, '.', ',');
+    echo $balance === "" ? "" : number_format($balance, 2, '.', ',');
 ?>

@@ -2,6 +2,7 @@
 <html>
     <head>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="/assets/css/transfer.css">
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
@@ -22,30 +23,35 @@
             </div>
         <?php endif ?>
 
-        <div class="container">
+        <div class="container" style="padding: 1.5em;">
             <div class="row justify-content-center">
                 <form action="../process.php" method="POST">
                     <input type="hidden" name="isAdmin" value="1">
-                    <div class="form-group">
-                        <label>Account Number</label>
-                        <input type="text" name="transferer" class="form-control" onkeyup="showNameBalance(this.value)" required>
-                        <label><em>Name</em></label>
-                        <p><strong><span id="accName"></span></strong></p>
-                        <label><em>Balance</em></label>
-                        <p><strong><span id="accBal"></span></strong></p>
+                    <div class="flexbox">
+                        <div class="flex-left">
+                            <div class="form-group">
+                                <label>Transfer from</label>
+                                <input type="text" name="transferer" class="form-control" onkeyup="showNameBalance(this.value)" required>
+                                <label>Name</label>
+                                <p><i><span id="accName"></span></i></p>
+                                <label>Balance</label>
+                                <p><i><span id="accBal"></span></i></p>
+                            </div>
+                        </div>
+                        <div class="flex-right">
+                            <div class="form-group">
+                                <label>Transfer to</label>
+                                <input type="text" name="transferee" class="form-control" onkeyup="showNameTransferee(this.value)" required>
+                                <label><em>Name</em></label>
+                                <p><i><span id="accNameT"></span></i></p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label>Transfer to</label>
-                        <input type="text" name="transferee" class="form-control" onkeyup="showNameTransferee(this.value)" required>
-                        <label><em>Name</em></label>
-                        <p><strong><span id="accNameT"></span></strong></p>
-                    </div>
-                    
-                    <div class="form-group">
+                    <div class="form-group" style="padding: 0em 1em;">
                         <label>Amount</label>
                         <input type="text" name="amount" class="form-control" placeholder="Enter amount to be transfered" required>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" style="padding: 0em 1em; text-align: left;">
                         <button type="submit" class="btn btn-primary" name="transfer">Continue</button>
                         <!-- <a href="home.php">Back</a> -->
                     </div>
