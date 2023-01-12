@@ -83,7 +83,7 @@
                     <?php endwhile; ?>
                     <div class="submit">
                         <button type="submit" class="btn btn-primary" name="client_update">Update</button>
-                        <a href="./index.php" style="padding-left: 0.5em;">Back</a>
+                        <a href="/client/home.php" style="padding-left: 0.5em;">Back</a>
                     </div>
                 </form>
             </div>
